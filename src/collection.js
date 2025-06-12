@@ -7,17 +7,13 @@ export default async function getWeatherData(location) {
     contentType: "json",
   });
 
-  try {
-    const response = await fetch(url + urlParams.toString());
+  const response = await fetch(url + urlParams.toString());
 
-    if (response.ok) {
-      const json = await response.json();
+  if (response.ok) {
+    const json = await response.json();
 
-      return json;
-    } else {
-      throw new Error(response.status);
-    }
-  } catch (err) {
-    console.log(err);
+    return json;
+  } else {
+    throw new Error(response.status);
   }
 }

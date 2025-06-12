@@ -9,11 +9,14 @@ import extractData from "./processing";
   locationForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const location = document.querySelector("#location").value;
+    const locationInput = document.querySelector("#location");
+    const location = locationInput.value;
 
     getWeatherData(location)
       .then((rawData) => extractData(rawData))
       .then((data) => displayWeatherData(data))
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err);
+      });
   });
 })();
