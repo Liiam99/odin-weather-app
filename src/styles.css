@@ -73,3 +73,44 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.weather-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.weather-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  border: 1px solid black;
+  font-size: 1.5rem;
+  margin: 20px;
+  padding: 10px;
+}
+
+.weather-card time {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.weather-card svg {
+  height: 150px;
+}
+
+.precip-windspeed-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}

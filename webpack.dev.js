@@ -7,4 +7,12 @@ module.exports = merge(common, {
   devServer: {
     watchFiles: ["./src/template.html"],
   },
+  module: {
+    rules: [
+      {
+        test: /\.svg$/,
+        loader: "svg-inline-loader",
+      },
+    ],
+  },
 });
