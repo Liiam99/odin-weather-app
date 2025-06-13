@@ -1,6 +1,6 @@
 import "./styles.css";
 
-import { displayWeatherData } from "./display";
+import { addLoader, displayWeatherData, removeLoader } from "./display";
 import getWeatherData from "./collection";
 import extractData from "./processing";
 
@@ -12,11 +12,17 @@ import extractData from "./processing";
     const locationInput = document.querySelector("#location");
     const location = locationInput.value;
 
+    addLoader();
+
     getWeatherData(location)
       .then((rawData) => extractData(rawData))
-      .then((data) => displayWeatherData(data))
+      .then((data) => {
+        displayWeatherData(data);
+        locationInput.value = "";
+      })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => removeLoader());
   });
 })();

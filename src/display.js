@@ -38,10 +38,26 @@ function createWeatherCard(dayData) {
 
   weatherCard.append(date, temp, precipWindspeedContainer);
 
-  const iconSvg = require(
-    `svg-inline-loader?classPrefix!./assets/${dayData.icon}.svg`,
-  );
+  const req = require.context("!!svg-inline-loader!./assets", false, /\.svg$/);
+
+  const iconSvg = req(`./${dayData.icon}.svg`);
   date.insertAdjacentHTML("afterend", iconSvg);
 
   return weatherCard;
+}
+
+export function addLoader() {
+  const weatherCardContainer = document.querySelector(
+    ".weather-card-container",
+  );
+
+  const loader = document.createElement("div");
+  loader.className = "loader";
+
+  weatherCardContainer.insertAdjacentElement("beforebegin", loader);
+}
+
+export function removeLoader() {
+  const loader = document.querySelector(".loader");
+  loader.remove();
 }
